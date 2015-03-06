@@ -3,7 +3,8 @@ set langmenu=en_US.UTF-8
 let $LANG = 'en_US.UTF-8'
 
 " Plugins
-execute pathogen#infect() " Manage runtimepath. (https://github.com/tpope/vim-pathogen)
+" Manage runtimepath.(https://github.com/tpope/vim-pathogen)
+execute pathogen#infect()
 
 " Backup
 set backupdir=~/vimfiles/tmp,. " Backup files folder.
