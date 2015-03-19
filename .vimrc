@@ -43,7 +43,7 @@ set diffopt+=vertical
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
-  syntax on
+	syntax on
 endif
 
 " Enable file type detection.
@@ -65,10 +65,11 @@ if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
 endif
 
-" Colorscheme
-set background=dark
-let g:solarized_underline=0
-let g:solarized_termtrans=1
+" Set colorscheme for GUI
+if has("gui_running")
+	set background=dark
+	colorscheme solarized
+endif
 
 " Toggle nerdtree with F10
 map <F10> :NERDTreeToggle<CR>
