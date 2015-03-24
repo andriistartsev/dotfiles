@@ -10,22 +10,22 @@ set backupdir=~/vimfiles/tmp,. " Backup files folder.
 set directory=~/vimfiles/tmp,. " Swap files folder.
 
 " Store session
-map <F2> :mksession! ~/vimfiles/tmp/vim_session <CR> " Quick write session with F2
-map <F3> :source ~/vimfiles/tmp/vim_session <CR>     " Load session with F3
+map <F2> :mksession! ~/vimfiles/tmp/vim_session <CR>	" Save session with F2
+map <F3> :source ~/vimfiles/tmp/vim_session <CR>		" Load session with F3
 
 " Editor
 set shiftwidth=4	" Shift width.
 set tabstop=4		" Set tabsize.
 set autoindent		" Copy indent from current line when starting a new line.
-set smartindent		" Automatically inserts one extra level of indentation in some cases, and works for C-like files.
+set smartindent		" Automatically inserts one extra level of indentation.
 set number			" Set line numbers.
-set laststatus=2	" Always display the status line.
 set ruler			" Show the cursor position all the time.
 set laststatus=2	" Always display the status line
 
 " Search
 set incsearch
-set ignorecase smartcase " make searches case-sensitive only if they contain upper-case characters
+"# make searches case-sensitive only if they contain upper-case characters
+set ignorecase smartcase
 
 set history=1000
 set noswapfile
@@ -58,9 +58,37 @@ set autoread
 " Prettify xml
 nmap ,f :%s/>\s*</>\r</g<CR>gg=G
 
-" ------------------------------------------------------------------------------
+" -----------------------------------------------------------------------------
+" Scripts section
+" -----------------------------------------------------------------------------
+
+"====[ Show when lines extend past column 80 "]================================>-<=====================
+
+highlight ColorColumn ctermbg=magenta
+
+function! MarkMargin (on)
+    if exists('b:MarkMargin')
+        try 
+            call matchdelete(b:MarkMargin)
+        catch /./
+        endtry
+        unlet b:MarkMargin
+    endif
+    if a:on
+        let b:MarkMargin = matchadd('ColorColumn', '\%81v', 100)
+    endif
+endfunction
+
+augroup MarkMargin
+    autocmd!
+    autocmd  BufEnter  *       :call MarkMargin(1)
+    autocmd  BufEnter  *.cs*   :call MarkMargin(0)
+augroup END
+
+
+" -----------------------------------------------------------------------------
 " Plug-in section
-" ------------------------------------------------------------------------------
+" -----------------------------------------------------------------------------
 if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
 endif
@@ -74,3 +102,4 @@ let g:solarized_termtrans=1
 map <F10> :NERDTreeToggle<CR>
 " Current file in nerdtree
 map <F9> :NERDTreeFind<CR>
+
