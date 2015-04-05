@@ -1,0 +1,3 @@
+" Insert text in the same position as where Insert mode
+" was stopped last time in the current buffer.
+nmap gi `^i
