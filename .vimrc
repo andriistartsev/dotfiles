@@ -27,7 +27,7 @@ set incsearch
 "# make searches case-sensitive only if they contain upper-case characters
 set ignorecase smartcase
 
-set history=1000
+set history=100
 set noswapfile
 
 " Display extra whitespace
@@ -46,6 +46,9 @@ if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
 	syntax on
 endif
 
+" File associations
+autocmd BufEnter *.*proj :setfiletype xml
+
 " Enable file type detection.
 " Use the default filetype settings, so that mail gets 'tw' set to 72,
 " 'cindent' is on in C files, etc.
@@ -55,11 +58,15 @@ filetype plugin indent on
 " If a file is changed outside of vim, automatically reload it without asking
 set autoread
 
+" -----------------------------------------------------------------------------
+"  Mappings
+" -----------------------------------------------------------------------------
+
 " Prettify xml
 nmap ,f :%s/>\s*</>\r</g<CR>gg=G
 
 " -----------------------------------------------------------------------------
-" Scripts section
+" Scripts
 " -----------------------------------------------------------------------------
 
 "====[ Show when lines extend past column 80 "]================================>-<=====================
@@ -68,7 +75,7 @@ highlight ColorColumn ctermbg=magenta
 
 function! MarkMargin (on)
     if exists('b:MarkMargin')
-        try 
+        try
             call matchdelete(b:MarkMargin)
         catch /./
         endtry
@@ -85,9 +92,8 @@ augroup MarkMargin
     autocmd  BufEnter  *.cs*   :call MarkMargin(0)
 augroup END
 
-
 " -----------------------------------------------------------------------------
-" Plug-in section
+" Plug-ins
 " -----------------------------------------------------------------------------
 if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
@@ -103,4 +109,3 @@ endif
 map <F10> :NERDTreeToggle<CR>
 " Current file in nerdtree
 map <F9> :NERDTreeFind<CR>
-
