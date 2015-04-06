@@ -1,3 +1,16 @@
+" -----------------------------------------------------------------------------
+"  Editor
+" -----------------------------------------------------------------------------
+
+" Search
+set incsearch
+"# make searches case-sensitive only if they contain upper-case characters
+set ignorecase smartcase
+
+" -----------------------------------------------------------------------------
+"  Mappings
+" -----------------------------------------------------------------------------
+
 " Insert text in the same position as where Insert mode
 " was stopped last time in the current buffer.
 nmap gi `^i
