@@ -4,6 +4,8 @@ set noerrorbells visualbell t_vb=
 " Set language
 set langmenu=en_US.UTF-8
 let $LANG = 'en_US.UTF-8'
+set encoding=utf-8  " The encoding displayed.
+set fileencoding=utf-8  " The encoding written to file.
 
 " Backup
 set backupdir=~/vimfiles/tmp,. " Backup files folder.
@@ -31,7 +33,7 @@ set history=100
 set noswapfile
 
 " Display extra whitespace
-set list listchars=tab:»·,trail:·,nbsp:·
+set list listchars=tab:Â»Â·,trail:Â·,nbsp:Â·
 
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
