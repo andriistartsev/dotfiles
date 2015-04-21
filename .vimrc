@@ -1,7 +1,7 @@
 " Disalbe bell
 set noerrorbells visualbell t_vb=
 
-" Set language
+" Set language and encoding
 set langmenu=en_US.UTF-8
 let $LANG = 'en_US.UTF-8'
 set encoding=utf-8  " The encoding displayed.
@@ -10,10 +10,6 @@ set fileencoding=utf-8  " The encoding written to file.
 " Backup
 set backupdir=~/vimfiles/tmp,. " Backup files folder.
 set directory=~/vimfiles/tmp,. " Swap files folder.
-
-" Store session
-map <F2> :mksession! ~/vimfiles/tmp/vim_session <CR>	" Save session with F2
-map <F3> :source ~/vimfiles/tmp/vim_session <CR>		" Load session with F3
 
 " Editor
 set shiftwidth=4	" Shift width.
@@ -65,13 +61,17 @@ set autoread
 " -----------------------------------------------------------------------------
 
 " Prettify xml
-nmap ,f :%s/>\s*</>\r</g<CR>gg=G
+autocmd FileType xml nmap ,f :%s/>\s*</>\r</g<CR>gg=G
+
+" Insert new line before(Shift-Enter) or after(Enter) cursor
+nmap <S-Enter> O<Esc>j
+nmap <CR> o<Esc>k
 
 " -----------------------------------------------------------------------------
 " Scripts
 " -----------------------------------------------------------------------------
 
-"====[ Show when lines extend past column 80 "]================================>-<=====================
+"====[ Show when lines extend past column 80 ]=================================>-<=====================
 
 highlight ColorColumn ctermbg=magenta
 
@@ -111,3 +111,10 @@ endif
 map <F10> :NERDTreeToggle<CR>
 " Current file in nerdtree
 map <F9> :NERDTreeFind<CR>
+
+" -----------------------------------------------------------------------------
+" Local config
+" -----------------------------------------------------------------------------
+if filereadable(expand("~/.vimrc.local"))
+  source ~/.vimrc.local
+endif
