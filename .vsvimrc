@@ -14,3 +14,7 @@ set ignorecase smartcase
 " Insert text in the same position as where Insert mode
 " was stopped last time in the current buffer.
 nmap gi `^i
+
+" Insert new line before(Shift-Enter) or after(Enter) cursor
+nmap <S-Enter> O<Esc>j
+nmap <CR> o<Esc>k
