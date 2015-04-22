@@ -60,8 +60,12 @@ set autoread
 "  Mappings
 " -----------------------------------------------------------------------------
 
-" Prettify xml
-autocmd FileType xml nmap ,f :%s/>\s*</>\r</g<CR>gg=G
+" Prettify files
+augroup prettify
+	autocmd!
+	autocmd FileType xml noremap <Leader>f :%s/>\s*</>\r</g<CR>gg=G
+	autocmd FileType json noremap <Leader>f :%!python -m json.tool<CR>
+augroup END
 
 " Insert new line before(Shift-Enter) or after(Enter) cursor
 nmap <S-Enter> O<Esc>j
