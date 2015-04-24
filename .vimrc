@@ -1,5 +1,6 @@
 " Disalbe bell
 set noerrorbells visualbell t_vb=
+autocmd GUIEnter * set visualbell t_vb=
 
 " Set language and encoding
 set langmenu=en_US.UTF-8
