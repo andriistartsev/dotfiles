@@ -17,7 +17,7 @@ set shiftwidth=4	" Shift width.
 set tabstop=4		" Set tabsize.
 set autoindent		" Copy indent from current line when starting a new line.
 set smartindent		" Automatically inserts one extra level of indentation.
-set number			" Set line numbers.
+set relativenumber	" Configure linenumbers
 set ruler			" Show the cursor position all the time.
 set laststatus=2	" Always display the status line
 
