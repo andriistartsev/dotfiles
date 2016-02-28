@@ -13,13 +13,14 @@ set backupdir=~/vimfiles/tmp,. " Backup files folder.
 set directory=~/vimfiles/tmp,. " Swap files folder.
 
 " Editor
-set shiftwidth=4	" Shift width.
-set tabstop=4		" Set tabsize.
-set autoindent		" Copy indent from current line when starting a new line.
-set smartindent		" Automatically inserts one extra level of indentation.
-set relativenumber	" Configure linenumbers
-set ruler			" Show the cursor position all the time.
-set laststatus=2	" Always display the status line
+set shiftwidth=4    " Shift width.
+set tabstop=4       " Set tabsize.
+set expandtab       " Replace tabs with spaces
+set autoindent      " Copy indent from current line when starting a new line.
+set smartindent     " Automatically inserts one extra level of indentation.
+set relativenumber  " Configure linenumbers
+set ruler           " Show the cursor position all the time.
+set laststatus=2    " Always display the status line
 
 " Search
 set incsearch
@@ -42,7 +43,7 @@ set diffopt+=vertical
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
-	syntax on
+    syntax on
 endif
 
 " File associations
@@ -63,9 +64,9 @@ set autoread
 
 " Prettify files
 augroup prettify
-	autocmd!
-	autocmd FileType xml noremap <Leader>f :%s/>\s*</>\r</g<CR>gg=G
-	autocmd FileType json noremap <Leader>f :%!python -m json.tool<CR>
+    autocmd!
+    autocmd FileType xml noremap <Leader>f :%s/>\s*</>\r</g<CR>gg=G
+    autocmd FileType json noremap <Leader>f :%!python -m json.tool<CR>
 augroup END
 
 " Insert new line before(Shift-Enter) or after(Enter) cursor
@@ -108,8 +109,8 @@ endif
 
 " Set colorscheme for GUI
 if has("gui_running")
-	set background=dark
-	colorscheme solarized
+    set background=dark
+    colorscheme solarized
 endif
 
 " Toggle nerdtree with F10
