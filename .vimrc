@@ -18,9 +18,11 @@ set tabstop=4       " Set tabsize.
 set expandtab       " Replace tabs with spaces
 set autoindent      " Copy indent from current line when starting a new line.
 set smartindent     " Automatically inserts one extra level of indentation.
-set relativenumber  " Configure linenumbers
 set ruler           " Show the cursor position all the time.
 set laststatus=2    " Always display the status line
+"# Configure linenumbers
+set number
+set relativenumber
 
 " Search
 set incsearch
