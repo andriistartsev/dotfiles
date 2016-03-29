@@ -11,6 +11,9 @@
 (defvar org-gtd-actions "actions.org")
 (defvar org-gtd-inbox "inbox.org")
 
+;; Alarm configuration
+(setq ring-bell-function 'ignore)
+
 ;; Editor
 (modify-coding-system-alist 'file "" 'utf-8)
 (setq-default tab-width 4)
