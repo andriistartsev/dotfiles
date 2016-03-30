@@ -70,6 +70,9 @@
 ;; Changes all yes/no questions to y/n type
 (fset 'yes-or-no-p 'y-or-n-p)
 
+;; Auto sync externally changed files
+(global-auto-revert-mode t)
+
 (setf make-backup-files nil)
 
 ;; Uncomment to debug errors
