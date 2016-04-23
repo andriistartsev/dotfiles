@@ -2,6 +2,9 @@
 set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
 
+" Update dir to current file
+autocmd BufEnter * silent! cd %:p:h
+
 " Set language and encoding
 set langmenu=en_US.UTF-8
 let $LANG = 'en_US.UTF-8'
@@ -20,13 +23,25 @@ set autoindent      " Copy indent from current line when starting a new line.
 set smartindent     " Automatically inserts one extra level of indentation.
 set ruler           " Show the cursor position all the time.
 set laststatus=2    " Always display the status line
-"# Configure linenumbers
+
+" Indicate max text width
+set textwidth=80
+set colorcolumn=+1
+
+"" Configure linenumbers
 set number
 set relativenumber
 
+" System clipboard copy & paste support
+set pastetoggle=<F2> "F2 before pasting to preserve indentation
+"" Copy paste to/from clipboard
+vnoremap <C-c> "*y
+map <silent><Leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>"
+map <silent><Leader><S-p> :set paste<CR>O<esc>"*]p:set nopaste<cr>"
+
 " Search
 set incsearch
-"# make searches case-sensitive only if they contain upper-case characters
+"" make searches case-sensitive only if they contain upper-case characters
 set ignorecase smartcase
 
 set history=100
@@ -74,33 +89,6 @@ augroup END
 " Insert new line before(Shift-Enter) or after(Enter) cursor
 nmap <S-Enter> O<Esc>j
 nmap <CR> o<Esc>k
-
-" -----------------------------------------------------------------------------
-" Scripts
-" -----------------------------------------------------------------------------
-
-"====[ Show when lines extend past column 80 ]=================================>-<=====================
-
-highlight ColorColumn ctermbg=magenta
-
-function! MarkMargin (on)
-    if exists('b:MarkMargin')
-        try
-            call matchdelete(b:MarkMargin)
-        catch /./
-        endtry
-        unlet b:MarkMargin
-    endif
-    if a:on
-        let b:MarkMargin = matchadd('ColorColumn', '\%81v', 100)
-    endif
-endfunction
-
-augroup MarkMargin
-    autocmd!
-    autocmd  BufEnter  *       :call MarkMargin(1)
-    autocmd  BufEnter  *.cs*   :call MarkMargin(0)
-augroup END
 
 " -----------------------------------------------------------------------------
 " Plug-ins
