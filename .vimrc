@@ -36,7 +36,7 @@ set relativenumber
 set pastetoggle=<F2> "F2 before pasting to preserve indentation
 "" Copy paste to/from clipboard
 vnoremap <C-c> "*y
-map <silent><Leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>
+map <silent><Leader>p :set paste<CR>i<esc>"*p:set nopaste<cr>
 map <silent><Leader><S-p> :set paste<CR>O<esc>"*]p:set nopaste<cr>
 
 " Search
