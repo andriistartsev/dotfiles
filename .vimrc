@@ -12,8 +12,8 @@ set encoding=utf-8  " The encoding displayed.
 set fileencoding=utf-8  " The encoding written to file.
 
 " Backup
-set backupdir=~/vimfiles/tmp,. " Backup files folder.
-set directory=~/vimfiles/tmp,. " Swap files folder.
+set backupdir=~/.vim/tmp,. " Backup files folder.
+set directory=~/.vim/tmp,. " Swap files folder.
 
 " Editor
 set shiftwidth=4    " Shift width.
@@ -25,8 +25,8 @@ set ruler           " Show the cursor position all the time.
 set laststatus=2    " Always display the status line
 
 " Indicate max text width
-set textwidth=80
-set colorcolumn=+1
+"set textwidth=80
+"set colorcolumn=+1
 
 "" Configure linenumbers
 set number
