@@ -11,6 +11,11 @@ let $LANG = 'en_US.UTF-8'
 set encoding=utf-8  " The encoding displayed.
 set fileencoding=utf-8  " The encoding written to file.
 
+" Use cyrillic layout
+set keymap=russian-jcukenwin
+set iminsert=0
+set imsearch=0
+
 " Backup
 set backupdir=~/.vim/tmp,. " Backup files folder.
 set directory=~/.vim/tmp,. " Swap files folder.
@@ -100,7 +105,7 @@ endif
 " Set colorscheme for GUI
 if has("gui_running")
     set background=dark
-    colorscheme solarized
+    colorscheme monokai
 endif
 
 " Toggle nerdtree with F10
