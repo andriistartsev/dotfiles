@@ -12,9 +12,11 @@ set encoding=utf-8  " The encoding displayed.
 set fileencoding=utf-8  " The encoding written to file.
 
 " Use cyrillic layout
-set keymap=russian-jcukenwin
-set iminsert=0
-set imsearch=0
+if filereadable(expand("$VIMRUNTIME/keymap/russian-jcukenwin.vim"))
+    set keymap=russian-jcukenwin
+    set iminsert=0
+    set imsearch=0
+endif
 
 " Backup
 set backupdir=~/.vim/tmp,. " Backup files folder.
@@ -99,7 +101,7 @@ nmap <CR> o<Esc>k
 " Plug-ins
 " -----------------------------------------------------------------------------
 if filereadable(expand("~/.vimrc.bundles"))
-  source ~/.vimrc.bundles
+    source ~/.vimrc.bundles
 endif
 
 " Set colorscheme for GUI
@@ -117,5 +119,5 @@ map <F9> :NERDTreeFind<CR>
 " Local config
 " -----------------------------------------------------------------------------
 if filereadable(expand("~/.vimrc.local"))
-  source ~/.vimrc.local
+    source ~/.vimrc.local
 endif
