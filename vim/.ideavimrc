@@ -1,0 +1,5 @@
+source ~/.vimrc
+set ideajoin
+
+nnoremap == :action ReformatCode<CR>
+vnoremap == :action ReformatCode<CR>
